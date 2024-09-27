@@ -1,0 +1,33 @@
+<div>
+  <!-- Checkbox for marking task as complete/incomplete -->
+  <input
+    type="checkbox"
+    [checked]="isComplete"
+    (change)="isComplete = !isComplete"
+  />
+  <!-- Display the task title -->
+  <span [ngClass]="{ 'completed-task': isComplete }">{{ taskTitle }}</span>
+
+  <!-- Icon to trigger editing the task title -->
+  <button (click)="isEditing = !isEditing">✏️</button>
+
+  <!--   Input field for editing the task title, shown when editing is true -->
+  <input
+    *ngIf="isEditing"
+    type="text"
+    [value]="taskTitle"
+    (input)="updateTaskTitle($event)"
+  />
+</div>
+
+<button (click)="switchAdminMode()">Switch Admin Mode️, currently {{ isAdmin ? "Active" : "Inactive" }}</button>
+
+@if (isAdmin) {
+  <button>Erase database</button>
+}
+
+<ul>
+  @for (ingredient of ingredientList; track ingredient.name) {
+    <li>{{ ingredient.quantity }} - {{ ingredient.name }}</li>
+  }
+</ul>
