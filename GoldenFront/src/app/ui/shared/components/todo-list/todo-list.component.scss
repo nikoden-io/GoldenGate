@@ -1,0 +1,13 @@
+$primary-color: violet;
+
+@mixin list-style {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+ul {
+  todo-list-item {
+    @include list-style;
+    color: $primary-color;
+  }
+}
