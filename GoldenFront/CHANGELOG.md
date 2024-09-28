@@ -1,8 +1,13 @@
 - [Unreleased](#unreleased)
 - [Released](#released)
+  - [v0.2.0 - 2024-28-09](#v020---2024-28-09)
   - [v0.1.0 - 2024-27-09](#v010---2024-27-09)
 
 ## [Unreleased]
+
+## [Released]
+
+### [v0.2.0 - 2024-28-09]
 
 - Development
   - Add **dev-server/server.js** to serve the 3 builds locally when checking localization
@@ -20,8 +25,6 @@
   - Remove **package-lock.json** file
   - Switch to **yarn** package manager
   - Add **yarn.lock** file
-
-## [Released]
 
 ### [v0.1.0 - 2024-27-09]
 
