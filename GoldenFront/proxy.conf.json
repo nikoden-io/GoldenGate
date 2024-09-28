@@ -1,0 +1,26 @@
+{
+  "/en": {
+    "target": "http://localhost:4200",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/en": ""
+    }
+  },
+  "/fr": {
+    "target": "http://localhost:4201",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/fr": ""
+    }
+  },
+  "/nl": {
+    "target": "http://localhost:4202",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/nl": ""
+    }
+  }
+}

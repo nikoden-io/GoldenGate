@@ -4,6 +4,14 @@
   "newProjectRoot": "projects",
   "projects": {
     "GoldenFront": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "en": "src/locale/messages.en.xlf",
+          "fr": "src/locale/messages.fr.xlf",
+          "nl": "src/locale/messages.nl.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,11 +25,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize": [
+              "en",
+              "fr",
+              "nl"
+            ],
             "outputPath": "dist/golden-front",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -87,6 +101,27 @@
                   "with": "src/environments/environment.staging.ts"
                 }
               ]
+            },
+            "en": {
+              "outputPath": "dist/golden-front/en",
+              "baseHref": "/en/",
+              "localize": [
+                "en"
+              ]
+            },
+            "fr": {
+              "outputPath": "dist/golden-front/fr",
+              "baseHref": "/fr/",
+              "localize": [
+                "fr"
+              ]
+            },
+            "nl": {
+              "outputPath": "dist/golden-front/nl",
+              "baseHref": "/nl/",
+              "localize": [
+                "nl"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -102,6 +137,15 @@
             },
             "staging": {
               "buildTarget": "GoldenFront:build:staging"
+            },
+            "en": {
+              "buildTarget": "GoldenFront:build:en"
+            },
+            "fr": {
+              "buildTarget": "GoldenFront:build:fr"
+            },
+            "nl": {
+              "buildTarget": "GoldenFront:build:nl"
             }
           },
           "defaultConfiguration": "development"
@@ -114,7 +158,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
@@ -128,6 +173,36 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": ".storybook",
+            "browserTarget": "GoldenFront:build",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "."
+            ],
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": ".storybook",
+            "browserTarget": "GoldenFront:build",
+            "compodoc": true,
+            "compodocArgs": [
+              "-e",
+              "json",
+              "-d",
+              "."
+            ],
+            "outputDir": "storybook-static"
           }
         }
       }

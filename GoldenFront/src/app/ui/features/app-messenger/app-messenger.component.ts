@@ -1,8 +1,8 @@
 import {Component, inject, OnInit} from "@angular/core";
 import {v4 as uuidV4} from 'uuid';
 
-import {MessagesFacade} from "../../../../core/features/messages/infrastructure/messages.facade";
-import {Message} from "../../../../core/features/messages/domain/message.entity";
+import {MessagesFacade} from "../../../core/features/messages/infrastructure/messages.facade";
+import {Message} from "../../../core/features/messages/domain/message.entity";
 
 @Component({
   selector: 'app-messenger',
