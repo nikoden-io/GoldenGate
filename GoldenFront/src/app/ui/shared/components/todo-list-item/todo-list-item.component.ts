@@ -13,17 +13,17 @@ import {NgClass, NgIf} from "@angular/common";
   ]
 })
 export class TodoListItem {
-  taskTitle: string = 'Task title'
+  taskTitle: string = $localize`:Task title|Le titre d'une tâche 2d:Task title`
   isComplete = false
   isEditing = false
   isAdmin = false;
   ingredientList = [
-    {name: 'noodles', quantity: 1},
-    {name: 'miso broth', quantity: 1},
-    {name: 'egg', quantity: 2},
+    {name: $localize`:noodles|L'ingrédient pâtes:name`, quantity: 1},
+    {name: $localize`:miso broth|Bouillon de miso:name`, quantity: 1},
+    {name: $localize`:egg|Un oeuf:name`, quantity: 2},
   ];
 
-  
+
   switchAdminMode() {
     this.isAdmin = !this.isAdmin
   }
