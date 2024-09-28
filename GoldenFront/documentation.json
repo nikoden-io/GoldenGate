@@ -1,0 +1,1915 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "AppState",
+            "id": "interface-AppState-86a2f043aabee7fd72f0d2c2090c1875fb066f3a9a2731d1faf2e93937fe9230efd7c107566db9ffa715e3d4464dd942649198f50b64698023d597711fdabcaf",
+            "file": "src/app/core/shared/store/store.app-state.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import {MessagesState} from \"../../features/messages/application/messages.state\";\n\nexport interface AppState {\n  messages?: MessagesState\n}\n",
+            "properties": [
+                {
+                    "name": "messages",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MessagesState",
+                    "optional": true,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "IMessageService",
+            "id": "interface-IMessageService-bf14105ec49a7500f2a2b24d6270049692bfabf8fd049c5e58ea7e083f9d97301ae462da17e02a2e6b15e4ecd07290f3ffb9f25c6f30a4dc29dc1137d19fefc9",
+            "file": "src/app/core/features/messages/domain/IMessageService.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import {Observable} from \"rxjs\";\n\nexport interface IMessageService {\n  deleteMessage(id: string): Observable<void>\n}\n",
+            "properties": [],
+            "indexSignatures": [],
+            "kind": 173,
+            "methods": [
+                {
+                    "name": "deleteMessage",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<void>",
+                    "typeParameters": [],
+                    "line": 4,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "extends": []
+        },
+        {
+            "name": "MessagesState",
+            "id": "interface-MessagesState-4af076fe7e9e27b420566005adb9d44e99c9e650d4a1ff37a5e0cb76c38d68e2e9e1871f24a8f126e7d28f0aea158e1d59453d048ee031e73e10b9e9eaa916c5",
+            "file": "src/app/core/features/messages/application/messages.state.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import {createEntityAdapter, EntityAdapter, EntityState} from \"@ngrx/entity\";\nimport {Message} from \"../domain/message.entity\";\n\nexport const messagesKey = '[Messages]'\n\nexport interface MessagesState extends EntityState<Message> {\n  loading: []\n}\n\nexport const selectId = ({id}: Message) => id\n\nexport const sortComparer = (a: Message, b: Message): number => a.publishDate.toString().localeCompare(b.publishDate.toString())\n\nexport const messagesAdapter: EntityAdapter<Message> = createEntityAdapter({selectId, sortComparer})\n\nexport const initialMessagesState: MessagesState = messagesAdapter.getInitialState({loading: []})\n",
+            "properties": [
+                {
+                    "name": "loading",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": [
+                "EntityState"
+            ]
+        },
+        {
+            "name": "User",
+            "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
+            "file": "src/stories/user.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface User {\n  name: string;\n}\n",
+            "properties": [
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "MessagesApiService",
+            "id": "injectable-MessagesApiService-98536e3d16cac8a7138e1e648a7a5b324fcadebe39489c68f552bd6550b62b521ee7b785443bcbd4c5759b74cd68c3821be2427f3534c796c522c72b62e5679e",
+            "file": "src/app/core/features/messages/infrastructure/messages-api.service.ts",
+            "properties": [
+                {
+                    "name": "http",
+                    "defaultValue": "inject(HttpClient)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "HttpClient",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "deleteMessage",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<void>",
+                    "typeParameters": [],
+                    "line": 11,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import {inject, Injectable} from \"@angular/core\";\nimport {HttpClient} from \"@angular/common/http\";\nimport {Observable} from \"rxjs\";\n\nimport {IMessageService} from \"../domain/IMessageService\";\n\n@Injectable({providedIn: 'root'})\nexport class MessagesApiService implements IMessageService {\n  private readonly http: HttpClient = inject(HttpClient)\n\n  deleteMessage(id: string): Observable<void> {\n    console.log(\"MessagesApiService: deleteMessage triggered\", id)\n    return this.http.delete<void>(`/api/messages/${id}`)\n  }\n}\n",
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "MessagesFacade",
+            "id": "injectable-MessagesFacade-7d7a09d5f846f9a4200eaadc67a8396bd23a0a765fe9bf11cc4362e7afa141544c4958f870ddfdb348ff7ee7f247ec772622809cf66620bddd7b779944ed4ab0",
+            "file": "src/app/core/features/messages/infrastructure/messages.facade.ts",
+            "properties": [
+                {
+                    "name": "messages",
+                    "defaultValue": "this.store.select(selectMessages)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<Message[]>",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "store",
+                    "defaultValue": "inject(Store)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Store",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "addMessage",
+                    "args": [
+                        {
+                            "name": "message",
+                            "type": "Message",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "message",
+                            "type": "Message",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "deleteOne",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import {inject, Injectable} from \"@angular/core\";\nimport {Store} from \"@ngrx/store\";\nimport {Observable} from \"rxjs\";\n\nimport {selectMessages} from \"../domain/messages.selectors\";\nimport {Message} from \"../domain/message.entity\";\nimport {addMessage, deleteMessage} from \"../application/usecases\";\n\n\n@Injectable({providedIn: 'root'})\nexport class MessagesFacade {\n  private readonly store: Store = inject(Store)\n\n  readonly messages: Observable<Message[]> = this.store.select(selectMessages)\n\n  addMessage(message: Message): void {\n    this.store.dispatch(addMessage({message}))\n  }\n\n  deleteOne(id: string): void {\n    console.log(\"DeleteOne triggered\", id)\n    this.store.dispatch(deleteMessage({id}))\n  }\n}\n",
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "MessagesMockService",
+            "id": "injectable-MessagesMockService-2ed730337e6cde5686f7ff314df5dcc785964c959e79e911b5f06e4c2e3501f17391c0795abff3740450c29d88726d31c850005d60b71604b693be94491af398",
+            "file": "src/app/core/features/messages/__tests__/infrastructure/messages-mock.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "deleteMessage",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<void>",
+                    "typeParameters": [],
+                    "line": 8,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import {Injectable} from \"@angular/core\";\nimport {Observable, of} from \"rxjs\";\n\nimport {IMessageService} from \"../../domain/IMessageService\";\n\n@Injectable({providedIn: 'root'})\nexport class MessagesMockService implements IMessageService {\n  deleteMessage(id: string): Observable<void> {\n    console.log(`Mock service: deleteMessage triggered with id: ${id}`);\n    return of(void 0);\n  }\n}\n",
+            "extends": [],
+            "type": "injectable"
+        }
+    ],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-5a78afe51923807100fcf9cd0d3c34d0543040a68433c219216b6ed3f8290a5dced02f6b871b00f50de3faf6c8270b8f46bd75d2d9adb823820a5854731faa8e",
+            "file": "src/app/ui/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'GoldenFront'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterOutlet"
+                },
+                {
+                    "name": "TodoList"
+                },
+                {
+                    "name": "TodoListItem"
+                },
+                {
+                    "name": "AppMessenger"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component} from '@angular/core';\nimport {RouterOutlet} from '@angular/router';\nimport {TodoList} from \"../shared/components/todo-list/todo-list.component\";\nimport {TodoListItem} from \"../shared/components/todo-list-item/todo-list-item.component\";\nimport {AppMessenger} from \"../shared/components/app-messenger/app-messenger.component\";\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [RouterOutlet, TodoList, TodoListItem, AppMessenger],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.scss'\n})\nexport class AppComponent {\n  title = 'GoldenFront';\n}\n",
+            "styleUrl": "./app.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<h1 i18n=\"@@welcomeMessage\">Welcome to our app!</h1>\n<h1 i18n=\"@@welcomeSubMessage\">This is a sub description message</h1>\n<app-messenger/>\n<todo-list></todo-list>\n<router-outlet></router-outlet>\n"
+        },
+        {
+            "name": "AppMessenger",
+            "id": "component-AppMessenger-67759b0378809c88b79e5a89e9882aad4a7087128b58b27f481e2b9fc873011fce91d27aa6b8d51c2b8eaeebbb7e0b00c963db31ee359e89dae56796da074efa",
+            "file": "src/app/ui/shared/components/app-messenger/app-messenger.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-messenger",
+            "styleUrls": [
+                "./app-messenger.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app-messenger.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "messagesFacade",
+                    "defaultValue": "inject(MessagesFacade)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MessagesFacade",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        123,
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "addMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "deleteMessageFacade",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, inject, OnInit} from \"@angular/core\";\nimport {v4 as uuidV4} from 'uuid';\n\nimport {MessagesFacade} from \"../../../../core/features/messages/infrastructure/messages.facade\";\nimport {Message} from \"../../../../core/features/messages/domain/message.entity\";\n\n@Component({\n  selector: 'app-messenger',\n  templateUrl: './app-messenger.component.html',\n  styleUrls: ['./app-messenger.component.scss'],\n  standalone: true\n})\n\nexport class AppMessenger implements OnInit {\n  private readonly messagesFacade: MessagesFacade = inject(MessagesFacade)\n\n  addMessage(): void {\n    const message: Message = {\n      id: uuidV4(),\n      publishDate: new Date(),\n      label: 'My first message',\n      content: \"This is my first message in Angular using NgRx in Standalone mode\"\n    }\n    this.messagesFacade.addMessage(message)\n  }\n\n  deleteMessageFacade(id: string): void {\n    this.messagesFacade.deleteOne(id)\n  }\n\n  ngOnInit(): void {\n    this.addMessage()\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "button {\n  margin-left: 10px;\n  margin-right: 10px;\n  margin-top: 10px;\n  margin-bottom: 10px;\n  padding: 10px;\n  border-radius: 5px;\n  background-color: #f5f5f5;\n  color: #333;\n  border: 1px solid #ccc;\n  cursor: pointer;\n  transition: background-color 0.3s;\n}\n",
+                    "styleUrl": "./app-messenger.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>This is my app messenger component</p>\n<button (click)=\"addMessage()\">ADD MESSAGE</button>\n<button (click)=\"deleteMessageFacade('2cc52f2b-7923-465f-a231-f46d371eec9b')\">DELETE MESSAGE</button>\n"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-d7bf0323e6da130e2609e2af0117b4a8d7cd874132206af50bf43dfc37044485fe50f2867ea76525730dd195b9b95a43802a12dadc6ad5cd7bf2faa07f19f0da",
+            "file": "src/stories/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-button",
+            "styleUrls": [
+                "./button.css"
+            ],
+            "styles": [],
+            "template": " <button  type=\"button\"\n  (click)=\"onClick.emit($event)\"\n  [ngClass]=\"classes\"\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\n>\n  {{ label }}\n</button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nWhat background color to use",
+                    "description": "<p>What background color to use</p>\n",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 760,
+                            "end": 773,
+                            "flags": 16842752,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 334,
+                            "tagName": {
+                                "pos": 761,
+                                "end": 769,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "required"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "rawdescription": "\n\nButton contents\n\n",
+                    "description": "<p>Button contents</p>\n",
+                    "line": 37,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "primary",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nIs this the principal call to action on the page?",
+                    "description": "<p>Is this the principal call to action on the page?</p>\n",
+                    "line": 21,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHow large should the button be?",
+                    "description": "<p>How large should the button be?</p>\n",
+                    "line": 29,
+                    "type": "\"small\" | \"medium\" | \"large\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nOptional click handler",
+                    "description": "<p>Optional click handler</p>\n",
+                    "line": 41,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: ` <button\n  type=\"button\"\n  (click)=\"onClick.emit($event)\"\n  [ngClass]=\"classes\"\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\n>\n  {{ label }}\n</button>`,\n  styleUrls: ['./button.css'],\n})\nexport class ButtonComponent {\n  /** Is this the principal call to action on the page? */\n  @Input()\n  primary = false;\n\n  /** What background color to use */\n  @Input()\n  backgroundColor?: string;\n\n  /** How large should the button be? */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /** Optional click handler */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-button {\n  display: inline-block;\n  cursor: pointer;\n  border: 0;\n  border-radius: 3em;\n  font-weight: 700;\n  line-height: 1;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n.storybook-button--primary {\n  background-color: #1ea7fd;\n  color: white;\n}\n.storybook-button--secondary {\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n  background-color: transparent;\n  color: #333;\n}\n.storybook-button--small {\n  padding: 10px 16px;\n  font-size: 12px;\n}\n.storybook-button--medium {\n  padding: 11px 20px;\n  font-size: 14px;\n}\n.storybook-button--large {\n  padding: 12px 24px;\n  font-size: 16px;\n}\n",
+                    "styleUrl": "./button.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 43
+                    }
+                }
+            }
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-48b9abe37706bc42f20cfa97ed9f943678344ea7d254c0c82183c657750c2191b43486fe730c778627b2ea6aa0e2f33a7abcf3ce08b68ad18b062ad99ea97acb",
+            "file": "src/stories/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-header",
+            "styleUrls": [
+                "./header.css"
+            ],
+            "styles": [],
+            "template": "<header>  <div class=\"storybook-header\">\n    <div>\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n            fill=\"#FFF\"\n          />\n          <path\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n            fill=\"#555AB9\"\n          />\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\n        </g>\n      </svg>\n      <h1>Acme</h1>\n    </div>\n    <div>\n      <div *ngIf=\"user\">\n        <span class=\"welcome\">\n          Welcome, <b>{{ user.name }}</b\n          >!\n        </span>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n      </div>\n      <div *ngIf=\"!user\">\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          class=\"margin-left\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          [primary]=\"true\"\n          class=\"margin-left\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </div>\n</header>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 66,
+                    "type": "User | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 75,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 69,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 72,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { ButtonComponent } from './button.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-header',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  template: `<header>\n  <div class=\"storybook-header\">\n    <div>\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n            fill=\"#FFF\"\n          />\n          <path\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n            fill=\"#555AB9\"\n          />\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\n        </g>\n      </svg>\n      <h1>Acme</h1>\n    </div>\n    <div>\n      <div *ngIf=\"user\">\n        <span class=\"welcome\">\n          Welcome, <b>{{ user.name }}</b\n          >!\n        </span>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n      </div>\n      <div *ngIf=\"!user\">\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          class=\"margin-left\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          [primary]=\"true\"\n          class=\"margin-left\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </div>\n</header>`,\n  styleUrls: ['./header.css'],\n})\nexport class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-header svg {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header h1 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 6px 0 6px 10px;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 1;\n}\n\n.storybook-header button + button {\n  margin-left: 10px;\n}\n\n.storybook-header .welcome {\n  margin-right: 10px;\n  color: #333;\n  font-size: 14px;\n}\n",
+                    "styleUrl": "./header.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "PageComponent",
+            "id": "component-PageComponent-21dd6eb370b4983b5c21c84d40e6f54d266a9d9af9889e6e76b35c43058bd53b3e451bad089d5adf4bea46647ba10265a2fa8cb15630398e75636307d4817fc6",
+            "file": "src/stories/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-page",
+            "styleUrls": [
+                "./page.css"
+            ],
+            "styles": [],
+            "template": "<article>  <storybook-header\n    [user]=\"user\"\n    (onLogout)=\"doLogout()\"\n    (onLogin)=\"doLogin()\"\n    (onCreateAccount)=\"doCreateAccount()\"\n  ></storybook-header>\n  <section class=\"storybook-page\">\n    <h2>Pages in Storybook</h2>\n    <p>\n      We recommend building UIs with a\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n        <strong>component-driven</strong>\n      </a>\n      process starting with atomic components and ending with pages.\n    </p>\n    <p>\n      Render pages with mock data. This makes it easy to build and review page states without\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\n      in Storybook:\n    </p>\n    <ul>\n      <li>\n        Use a higher-level connected component. Storybook helps you compose such data from the\n        \"args\" of child component stories\n      </li>\n      <li>\n        Assemble data in the page component from your services. You can mock these services out\n        using Storybook.\n      </li>\n    </ul>\n    <p>\n      Get a guided tutorial on component-driven development at\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n        Storybook tutorials\n      </a>\n      . Read more in the\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n      .\n    </p>\n    <div class=\"tip-wrapper\">\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n            id=\"a\"\n            fill=\"#999\"\n          />\n        </g>\n      </svg>\n      Viewports addon in the toolbar\n    </div>\n  </section>\n</article>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "User | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 69
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "doCreateAccount",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 79,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "doLogin",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "doLogout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 71,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "HeaderComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { HeaderComponent } from './header.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-page',\n  standalone: true,\n  imports: [CommonModule, HeaderComponent],\n  template: `<article>\n  <storybook-header\n    [user]=\"user\"\n    (onLogout)=\"doLogout()\"\n    (onLogin)=\"doLogin()\"\n    (onCreateAccount)=\"doCreateAccount()\"\n  ></storybook-header>\n  <section class=\"storybook-page\">\n    <h2>Pages in Storybook</h2>\n    <p>\n      We recommend building UIs with a\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n        <strong>component-driven</strong>\n      </a>\n      process starting with atomic components and ending with pages.\n    </p>\n    <p>\n      Render pages with mock data. This makes it easy to build and review page states without\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\n      in Storybook:\n    </p>\n    <ul>\n      <li>\n        Use a higher-level connected component. Storybook helps you compose such data from the\n        \"args\" of child component stories\n      </li>\n      <li>\n        Assemble data in the page component from your services. You can mock these services out\n        using Storybook.\n      </li>\n    </ul>\n    <p>\n      Get a guided tutorial on component-driven development at\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n        Storybook tutorials\n      </a>\n      . Read more in the\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n      .\n    </p>\n    <div class=\"tip-wrapper\">\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n            id=\"a\"\n            fill=\"#999\"\n          />\n        </g>\n      </svg>\n      Viewports addon in the toolbar\n    </div>\n  </section>\n</article>`,\n  styleUrls: ['./page.css'],\n})\nexport class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-page {\n  margin: 0 auto;\n  padding: 48px 20px;\n  max-width: 600px;\n  color: #333;\n  font-size: 14px;\n  line-height: 24px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-page h2 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 0 0 4px;\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 1;\n}\n\n.storybook-page p {\n  margin: 1em 0;\n}\n\n.storybook-page a {\n  color: #1ea7fd;\n  text-decoration: none;\n}\n\n.storybook-page ul {\n  margin: 1em 0;\n  padding-left: 30px;\n}\n\n.storybook-page li {\n  margin-bottom: 8px;\n}\n\n.storybook-page .tip {\n  display: inline-block;\n  vertical-align: top;\n  margin-right: 10px;\n  border-radius: 1em;\n  background: #e7fdd8;\n  padding: 4px 12px;\n  color: #66bf3c;\n  font-weight: 700;\n  font-size: 11px;\n  line-height: 12px;\n}\n\n.storybook-page .tip-wrapper {\n  margin-top: 40px;\n  margin-bottom: 40px;\n  font-size: 13px;\n  line-height: 20px;\n}\n\n.storybook-page .tip-wrapper svg {\n  display: inline-block;\n  vertical-align: top;\n  margin-top: 3px;\n  margin-right: 4px;\n  width: 12px;\n  height: 12px;\n}\n\n.storybook-page .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "styleUrl": "./page.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "TodoList",
+            "id": "component-TodoList-4a618cf0a7e0e0e43b13cbbb1f7d3b8810d2b348798b4196e06f6163a94db911d8154c0b72e55d879a2920679deee76bcad7518e00e4329f4415249eebe09102",
+            "file": "src/app/ui/shared/components/todo-list/todo-list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "todo-list",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "todo-list.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "envDescription",
+                    "defaultValue": "environment.description",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "TodoListItem"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component} from \"@angular/core\";\nimport {TodoListItem} from \"../todo-list-item/todo-list-item.component\";\nimport {environment} from \"../../../../../environments/environment\";\n\n@Component({\n  standalone: true,\n  imports: [TodoListItem],\n  selector: 'todo-list',\n  templateUrl: 'todo-list.component.html',\n  styleUrl: 'todo-list.component.scss'\n})\n\nexport class TodoList {\n  public envDescription = environment.description\n}\n",
+            "styleUrl": "todo-list.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<main>\n  <h1>{{ envDescription }}</h1>\n  <div>\n    <ul>\n      <todo-list-item>Hello World</todo-list-item>\n      <todo-list-item>Hello World</todo-list-item>\n      <todo-list-item>Hello World</todo-list-item>\n      <todo-list-item>Hello World</todo-list-item>\n      <todo-list-item>Hello World</todo-list-item>\n    </ul>\n    <todo-list-item>Hello World</todo-list-item>\n  </div>\n</main>\n"
+        },
+        {
+            "name": "TodoListItem",
+            "id": "component-TodoListItem-af374df2a20e7c0dbe7dfcdafed8e86a7db0851db5f40ca97b14bb460b828e2de3a597b7b716be4d2015ad4bf8adc5e1751d54c79b6524306472219468647bec",
+            "file": "src/app/ui/shared/components/todo-list-item/todo-list-item.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "todo-list-item",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./todo-list-item.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "ingredientList",
+                    "defaultValue": "[\n    {name: 'noodles', quantity: 1},\n    {name: 'miso broth', quantity: 1},\n    {name: 'egg', quantity: 2},\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "isAdmin",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "isComplete",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "isEditing",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "taskTitle",
+                    "defaultValue": "'Task title'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "completeTask",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "incompleteTask",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "switchAdminMode",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "updateTaskTitle",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "NgClass"
+                },
+                {
+                    "name": "NgIf"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component} from \"@angular/core\";\nimport {FormsModule} from \"@angular/forms\";\nimport {NgClass, NgIf} from \"@angular/common\";\n\n@Component({\n  standalone: true,\n  selector: 'todo-list-item',\n  templateUrl: './todo-list-item.component.html',\n  imports: [\n    FormsModule,\n    NgClass,\n    NgIf\n  ]\n})\nexport class TodoListItem {\n  taskTitle: string = 'Task title'\n  isComplete = false\n  isEditing = false\n  isAdmin = false;\n  ingredientList = [\n    {name: 'noodles', quantity: 1},\n    {name: 'miso broth', quantity: 1},\n    {name: 'egg', quantity: 2},\n  ];\n\n  \n  switchAdminMode() {\n    this.isAdmin = !this.isAdmin\n  }\n\n  completeTask() {\n    this.isComplete = true\n  }\n\n  incompleteTask() {\n    this.isComplete = false\n  }\n\n  updateTaskTitle(event: Event) {\n    const inputElement = event.target as HTMLInputElement;\n    this.taskTitle = inputElement.value;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div>\n  <!-- Checkbox for marking task as complete/incomplete -->\n  <input\n    type=\"checkbox\"\n    [checked]=\"isComplete\"\n    (change)=\"isComplete = !isComplete\"\n  />\n  <!-- Display the task title -->\n  <span [ngClass]=\"{ 'completed-task': isComplete }\">{{ taskTitle }}</span>\n\n  <!-- Icon to trigger editing the task title -->\n  <button (click)=\"isEditing = !isEditing\">✏️</button>\n\n  <!--   Input field for editing the task title, shown when editing is true -->\n  <input\n    *ngIf=\"isEditing\"\n    type=\"text\"\n    [value]=\"taskTitle\"\n    (input)=\"updateTaskTitle($event)\"\n  />\n</div>\n\n<button (click)=\"switchAdminMode()\">Switch Admin Mode️, currently {{ isAdmin ? \"Active\" : \"Inactive\" }}</button>\n\n@if (isAdmin) {\n  <button>Erase database</button>\n}\n\n<ul>\n  @for (ingredient of ingredientList; track ingredient.name) {\n    <li>{{ ingredient.quantity }} - {{ ingredient.name }}</li>\n  }\n</ul>\n"
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "addMessage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/features/messages/application/usecases/add-message.usecase.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction(\n  `${messagesKey} Add Message`,\n  props<{ message: Message }>()\n)"
+            },
+            {
+                "name": "appConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/config/app.config.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ApplicationConfig",
+                "defaultValue": "{\n  providers: [\n    // Core\n    provideHttpClient(),\n    provideRouter(routes),\n    provideZoneChangeDetection({eventCoalescing: true}),\n\n    // NgRx\n    provideEffects({deleteMessage$}),\n    provideStore({messages: messagesReducers}),\n    provideStoreDevtools({\n      maxAge: 41,\n      logOnly: !isDevMode(),\n      autoPause: true,\n      trace: false,\n      traceLimit: 75\n    })\n  ]\n}"
+            },
+            {
+                "name": "counterReducer",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/demo-state/counter.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createReducer(\n  initialState,\n  on(increment, state => state + 1),\n  on(decrement, state => state - 1),\n  on(reset, state => 0)\n)"
+            },
+            {
+                "name": "decrement",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/demo-state/counter.action.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction('[Counter component] Decrement')"
+            },
+            {
+                "name": "deleteMessage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/features/messages/application/usecases/delete-message.usecase.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction(\n  `${messagesKey} Delete Message`,\n  props<{ id: string }>()\n)"
+            },
+            {
+                "name": "deleteMessage$",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/features/messages/application/usecases/delete-message.usecase.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createEffect(\n  (action$: Actions = inject(Actions), messagesApiService: MessagesApiService = inject(MessagesApiService)) => {\n    return action$.pipe(\n      ofType(deleteMessage),\n      mergeMap(({id}) =>\n        messagesApiService.deleteMessage(id).pipe(\n          map(() => {\n            console.log(\"Success in deleteMessage$\")\n            return deleteMessageSuccess()\n          }),\n          catchError(() => {\n            console.log(\"Error in deleteMessage$\")\n            return [deleteMessageError()]\n          })\n        )\n      )\n    )\n  },\n  {functional: true}\n)"
+            },
+            {
+                "name": "deleteMessageError",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/features/messages/application/usecases/delete-message.usecase.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction(\n  `${messagesKey} Delete Message Error`\n)"
+            },
+            {
+                "name": "deleteMessageSuccess",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/features/messages/application/usecases/delete-message.usecase.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction(\n  `${messagesKey} Delete Message Success`\n)"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.development.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: false,\n  description: \"This is the development environment\"\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.production.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: true,\n  description: \"This is the production environment\"\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.staging.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: true,\n  description: \"This is the staging environment\"\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: false,\n  description: \"This is the default environment\"\n}"
+            },
+            {
+                "name": "increment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/demo-state/counter.action.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction('[Counter component] Increment')"
+            },
+            {
+                "name": "initialMessagesState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/features/messages/application/messages.state.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "MessagesState",
+                "defaultValue": "messagesAdapter.getInitialState({loading: []})"
+            },
+            {
+                "name": "initialState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/demo-state/counter.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
+                "name": "messagesAdapter",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/features/messages/application/messages.state.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "EntityAdapter<Message>",
+                "defaultValue": "createEntityAdapter({selectId, sortComparer})"
+            },
+            {
+                "name": "messagesKey",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/features/messages/application/messages.state.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'[Messages]'"
+            },
+            {
+                "name": "messagesReducers",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/features/messages/application/messages.reducers.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ActionReducer<MessagesState>",
+                "defaultValue": "createReducer(\n  initialMessagesState,\n  on(addMessage, (state: MessagesState, {message}) => messagesAdapter.addOne(message, state)),\n  on(deleteMessage, (state: MessagesState, {id}) => messagesAdapter.removeOne(id, state))\n)"
+            },
+            {
+                "name": "reset",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/demo-state/counter.action.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction('[Counter component] Reset')"
+            },
+            {
+                "name": "selectId",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/features/messages/application/messages.state.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "({id}: Message) => id"
+            },
+            {
+                "name": "selectMessages",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/features/messages/domain/messages.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "MemoizedSelector<AppState, Message[]>",
+                "defaultValue": "createSelector(\n  selectMessagesFeature,\n  ({entities}: MessagesState): Message[] => Object.values(entities) as Message[]\n)"
+            },
+            {
+                "name": "selectMessagesFeature",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/features/messages/domain/messages.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "MemoizedSelector<AppState, MessagesState>",
+                "defaultValue": "createFeatureSelector<MessagesState>('messages')"
+            },
+            {
+                "name": "sortComparer",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/features/messages/application/messages.state.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(a: Message, b: Message): number => a.publishDate.toString().localeCompare(b.publishDate.toString())"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "Message",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "src/app/core/features/messages/domain/message.entity.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/app/core/features/messages/application/usecases/add-message.usecase.ts": [
+                {
+                    "name": "addMessage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/features/messages/application/usecases/add-message.usecase.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction(\n  `${messagesKey} Add Message`,\n  props<{ message: Message }>()\n)"
+                }
+            ],
+            "src/app/core/config/app.config.ts": [
+                {
+                    "name": "appConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/config/app.config.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApplicationConfig",
+                    "defaultValue": "{\n  providers: [\n    // Core\n    provideHttpClient(),\n    provideRouter(routes),\n    provideZoneChangeDetection({eventCoalescing: true}),\n\n    // NgRx\n    provideEffects({deleteMessage$}),\n    provideStore({messages: messagesReducers}),\n    provideStoreDevtools({\n      maxAge: 41,\n      logOnly: !isDevMode(),\n      autoPause: true,\n      trace: false,\n      traceLimit: 75\n    })\n  ]\n}"
+                }
+            ],
+            "src/app/core/demo-state/counter.reducer.ts": [
+                {
+                    "name": "counterReducer",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/demo-state/counter.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createReducer(\n  initialState,\n  on(increment, state => state + 1),\n  on(decrement, state => state - 1),\n  on(reset, state => 0)\n)"
+                },
+                {
+                    "name": "initialState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/demo-state/counter.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "defaultValue": "0"
+                }
+            ],
+            "src/app/core/demo-state/counter.action.ts": [
+                {
+                    "name": "decrement",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/demo-state/counter.action.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction('[Counter component] Decrement')"
+                },
+                {
+                    "name": "increment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/demo-state/counter.action.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction('[Counter component] Increment')"
+                },
+                {
+                    "name": "reset",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/demo-state/counter.action.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction('[Counter component] Reset')"
+                }
+            ],
+            "src/app/core/features/messages/application/usecases/delete-message.usecase.ts": [
+                {
+                    "name": "deleteMessage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/features/messages/application/usecases/delete-message.usecase.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction(\n  `${messagesKey} Delete Message`,\n  props<{ id: string }>()\n)"
+                },
+                {
+                    "name": "deleteMessage$",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/features/messages/application/usecases/delete-message.usecase.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createEffect(\n  (action$: Actions = inject(Actions), messagesApiService: MessagesApiService = inject(MessagesApiService)) => {\n    return action$.pipe(\n      ofType(deleteMessage),\n      mergeMap(({id}) =>\n        messagesApiService.deleteMessage(id).pipe(\n          map(() => {\n            console.log(\"Success in deleteMessage$\")\n            return deleteMessageSuccess()\n          }),\n          catchError(() => {\n            console.log(\"Error in deleteMessage$\")\n            return [deleteMessageError()]\n          })\n        )\n      )\n    )\n  },\n  {functional: true}\n)"
+                },
+                {
+                    "name": "deleteMessageError",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/features/messages/application/usecases/delete-message.usecase.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction(\n  `${messagesKey} Delete Message Error`\n)"
+                },
+                {
+                    "name": "deleteMessageSuccess",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/features/messages/application/usecases/delete-message.usecase.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction(\n  `${messagesKey} Delete Message Success`\n)"
+                }
+            ],
+            "src/environments/environment.development.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.development.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false,\n  description: \"This is the development environment\"\n}"
+                }
+            ],
+            "src/environments/environment.production.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.production.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true,\n  description: \"This is the production environment\"\n}"
+                }
+            ],
+            "src/environments/environment.staging.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.staging.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true,\n  description: \"This is the staging environment\"\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false,\n  description: \"This is the default environment\"\n}"
+                }
+            ],
+            "src/app/core/features/messages/application/messages.state.ts": [
+                {
+                    "name": "initialMessagesState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/features/messages/application/messages.state.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MessagesState",
+                    "defaultValue": "messagesAdapter.getInitialState({loading: []})"
+                },
+                {
+                    "name": "messagesAdapter",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/features/messages/application/messages.state.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "EntityAdapter<Message>",
+                    "defaultValue": "createEntityAdapter({selectId, sortComparer})"
+                },
+                {
+                    "name": "messagesKey",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/features/messages/application/messages.state.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'[Messages]'"
+                },
+                {
+                    "name": "selectId",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/features/messages/application/messages.state.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "({id}: Message) => id"
+                },
+                {
+                    "name": "sortComparer",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/features/messages/application/messages.state.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(a: Message, b: Message): number => a.publishDate.toString().localeCompare(b.publishDate.toString())"
+                }
+            ],
+            "src/app/core/features/messages/application/messages.reducers.ts": [
+                {
+                    "name": "messagesReducers",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/features/messages/application/messages.reducers.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ActionReducer<MessagesState>",
+                    "defaultValue": "createReducer(\n  initialMessagesState,\n  on(addMessage, (state: MessagesState, {message}) => messagesAdapter.addOne(message, state)),\n  on(deleteMessage, (state: MessagesState, {id}) => messagesAdapter.removeOne(id, state))\n)"
+                }
+            ],
+            "src/app/core/features/messages/domain/messages.selectors.ts": [
+                {
+                    "name": "selectMessages",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/features/messages/domain/messages.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MemoizedSelector<AppState, Message[]>",
+                    "defaultValue": "createSelector(\n  selectMessagesFeature,\n  ({entities}: MessagesState): Message[] => Object.values(entities) as Message[]\n)"
+                },
+                {
+                    "name": "selectMessagesFeature",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/features/messages/domain/messages.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MemoizedSelector<AppState, MessagesState>",
+                    "defaultValue": "createFeatureSelector<MessagesState>('messages')"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "src/app/core/features/messages/domain/message.entity.ts": [
+                {
+                    "name": "Message",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "src/app/core/features/messages/domain/message.entity.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {
+        "count": 2,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app/core/config/app.config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "appConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/demo-state/counter.action.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "decrement",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/demo-state/counter.action.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "increment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/demo-state/counter.action.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "reset",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/demo-state/counter.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "counterReducer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/demo-state/counter.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "initialState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/__tests__/infrastructure/messages-mock.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "MessagesMockService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/application/messages.reducers.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "messagesReducers",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/application/messages.state.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "MessagesState",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/application/messages.state.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "initialMessagesState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/application/messages.state.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "messagesAdapter",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/application/messages.state.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "messagesKey",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/application/messages.state.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectId",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/application/messages.state.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "sortComparer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/application/usecases/add-message.usecase.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "addMessage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/application/usecases/delete-message.usecase.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "deleteMessage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/application/usecases/delete-message.usecase.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "deleteMessage$",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/application/usecases/delete-message.usecase.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "deleteMessageError",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/application/usecases/delete-message.usecase.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "deleteMessageSuccess",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/domain/IMessageService.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IMessageService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/domain/messages.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectMessages",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/domain/messages.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectMessagesFeature",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/infrastructure/messages-api.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "MessagesApiService",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/features/messages/infrastructure/messages.facade.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "MessagesFacade",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/shared/store/store.app-state.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "AppState",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/shared/components/app-messenger/app-messenger.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppMessenger",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/shared/components/todo-list-item/todo-list-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TodoListItem",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/shared/components/todo-list/todo-list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TodoList",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.development.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.production.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.staging.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/stories/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/user.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "User",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            }
+        ]
+    }
+}

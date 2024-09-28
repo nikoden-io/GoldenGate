@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="welcomeMessage" datatype="html">
+        <source>Welcome to our app!</source>
+        <target>Welcome to our app!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ui/app/app.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="welcomeSubMessage" datatype="html">
+        <source>This is a sub description message</source>
+        <target>This is a sub description message</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ui/app/app.component.html</context>
+          <context context-type="linenumber">2,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1590577080255892606" datatype="html">
+        <source>Task title</source>
+        <target>Task title</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ui/shared/components/todo-list-item/todo-list-item.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">Le titre d&apos;une tâche 2d</note>
+        <note priority="1" from="meaning">Task title</note>
+      </trans-unit>
+      <trans-unit id="7698885731696692748" datatype="html">
+        <source>name</source>
+        <target>Name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ui/shared/components/todo-list-item/todo-list-item.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <note priority="1" from="description">L&apos;ingrédient pâtes</note>
+        <note priority="1" from="meaning">noodles</note>
+      </trans-unit>
+      <trans-unit id="2923795626986310671" datatype="html">
+        <source>name</source>
+        <target>Name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ui/shared/components/todo-list-item/todo-list-item.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description">Bouillon de miso</note>
+        <note priority="1" from="meaning">miso broth</note>
+      </trans-unit>
+      <trans-unit id="1846646791447431165" datatype="html">
+        <source>name</source>
+        <target>Name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ui/shared/components/todo-list-item/todo-list-item.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description">Un oeuf</note>
+        <note priority="1" from="meaning">egg</note>
+      </trans-unit>
+      <trans-unit id="8780266983242756973" datatype="html">
+        <source>My internationalized sub-title</source>
+        <target>My internationalized sub-title</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ui/shared/components/todo-list/todo-list.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4584092443788135411" datatype="html">
+        <source>Hello</source>
+        <target>Hello</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ui/shared/components/todo-list/todo-list.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ui/shared/components/todo-list/todo-list.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/ui/shared/components/todo-list/todo-list.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
