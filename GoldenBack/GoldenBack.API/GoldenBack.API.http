@@ -1,0 +1,6 @@
+@GoldenBack.API_HostAddress = http://localhost:5166
+
+GET {{GoldenBack.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

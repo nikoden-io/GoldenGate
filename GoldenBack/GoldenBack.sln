@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldenBack.API", "GoldenBack.API\GoldenBack.API.csproj", "{74B6A368-12CB-4F56-AB4F-EC52B20333C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldenBack.Domain", "GoldenBack.Domain\GoldenBack.Domain.csproj", "{6428CE13-5EAC-4C05-B326-1F8A689463E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldenBack.Infrastructure", "GoldenBack.Infrastructure\GoldenBack.Infrastructure.csproj", "{AD5F4152-4A0B-46EA-AD3F-9A4465C37C3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldenBack.Application", "GoldenBack.Application\GoldenBack.Application.csproj", "{B1574F38-BF52-42B5-8DBC-FB0082C1550E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74B6A368-12CB-4F56-AB4F-EC52B20333C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B6A368-12CB-4F56-AB4F-EC52B20333C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B6A368-12CB-4F56-AB4F-EC52B20333C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B6A368-12CB-4F56-AB4F-EC52B20333C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6428CE13-5EAC-4C05-B326-1F8A689463E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6428CE13-5EAC-4C05-B326-1F8A689463E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6428CE13-5EAC-4C05-B326-1F8A689463E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6428CE13-5EAC-4C05-B326-1F8A689463E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD5F4152-4A0B-46EA-AD3F-9A4465C37C3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD5F4152-4A0B-46EA-AD3F-9A4465C37C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD5F4152-4A0B-46EA-AD3F-9A4465C37C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD5F4152-4A0B-46EA-AD3F-9A4465C37C3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1574F38-BF52-42B5-8DBC-FB0082C1550E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1574F38-BF52-42B5-8DBC-FB0082C1550E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1574F38-BF52-42B5-8DBC-FB0082C1550E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1574F38-BF52-42B5-8DBC-FB0082C1550E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
