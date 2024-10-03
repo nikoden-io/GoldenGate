@@ -115,6 +115,10 @@ if (app.Environment.IsDevelopment())
 
 app.Run();
 
+public partial class Program
+{
+}
+
 public class MongoSettings
 {
     public string ConnectionString { get; set; }
