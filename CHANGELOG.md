@@ -5,7 +5,8 @@
 
 - [Unreleased](#unreleased)
 - [Released](#released)
-  - [v0.3.0 - 2024-10-02](#v030---2024-10-02)
+  - [v0.4.0 - 2024-03-10](#v040---2024-03-10)
+  - [v0.3.0 - 2024-02-10](#v030---2024-02-10)
   - [v0.2.0 - 2024-28-09](#v020---2024-28-09)
   - [v0.1.0 - 2024-27-09](#v010---2024-27-09)
 
@@ -14,7 +15,24 @@
 
 ## Released
 
-### v0.3.0 - 2024-10-02
+### v0.4.0 - 2024-03-10
+
+#### GoldenBack
+- Testing tools
+  - Create **GoldenBack.Tests** project
+    - Add **xUnit** testing framework
+    - Add **Moq** mocking library
+    - Add **FluentAssertions** for fluent assertions
+  - Create builders for **DemoAtom** and **CreateDemoAtomDTO**
+  - Create **DemoAtomAppServiceTests** to test business logic
+  - Create **DemoAtomRepositoryTests** to test database operations
+  - Create **DemoAtomControllerTests** to test endpoints
+    - Create integration tests using **WebApplicationFactory** to test endpoints
+    - Create custom **WebApplicationFactory** to use in integration tests
+
+
+
+### v0.3.0 - 2024-02-10
 
 #### GoldenBack
 - Initial project configuration
@@ -66,7 +84,7 @@
       - Interface helps us in dependency injection for our clean architecture
     - Create **DemoAtomRepository** and **IDemoAtomRepository**
       - Infrastructure repository that manages all database operations
-      - Interface helps us in dependency injection for our clean architecture
+      - Interface helps us in dependency injection for our clean architectureri
 
 ### v0.2.0 - 2024-28-09
 
